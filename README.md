@@ -107,9 +107,9 @@ npm run preview
 docker build -t json-expert .
 
 # Run container
-docker run -d -p 80:80 --name json-expert json-expert
+docker run -d -p 12355:80 --name json-expert json-expert
 
-# Access at http://localhost
+# Access at http://localhost:12355
 ```
 
 #### Using Docker Compose
@@ -142,8 +142,8 @@ VITE_ALLOWED_DOMAINS=jsonexpert.com,localhost
 # File Upload Settings
 VITE_MAX_FILE_SIZE=104857600  # 100MB
 
-# Server Port
-PORT=80
+# Server Port (external port for Docker)
+PORT=12355
 ```
 
 **Custom domain setup:**

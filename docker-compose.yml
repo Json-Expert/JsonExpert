@@ -5,7 +5,7 @@ services:
       dockerfile: Dockerfile
     container_name: json-expert
     ports:
-      - "${PORT:-80}:80"
+      - "${PORT:-12355}:80"
     environment:
       - NODE_ENV=production
       - VITE_ALLOWED_DOMAINS=${VITE_ALLOWED_DOMAINS:-jsonexpert.com,localhost}
