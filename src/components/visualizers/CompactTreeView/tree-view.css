@@ -1,0 +1,147 @@
+/* Compact Tree View Styles */
+.compact-tree-view {
+  @apply w-full h-full overflow-auto bg-gray-50 dark:bg-gray-900;
+}
+
+.tree-container {
+  @apply p-4 min-w-fit;
+}
+
+/* Tree Node Styles */
+.tree-node {
+  @apply relative;
+}
+
+.node-content {
+  @apply relative flex items-start;
+}
+
+.node-header {
+  @apply flex items-center gap-1.5 px-2 py-1 rounded-md text-sm select-none;
+  @apply transition-colors duration-150;
+  margin-left: calc(var(--depth, 0) * 1.5rem);
+}
+
+.node-toggle {
+  @apply flex items-center justify-center text-gray-500 dark:text-gray-400;
+  @apply transition-transform duration-200;
+}
+
+.node-icon {
+  @apply flex items-center justify-center;
+}
+
+.node-key {
+  @apply font-medium text-gray-700 dark:text-gray-300;
+}
+
+.node-value {
+  @apply ml-1.5 text-gray-600 dark:text-gray-400;
+}
+
+.node-count {
+  @apply ml-1 text-xs text-gray-500 dark:text-gray-500;
+}
+
+.node-children {
+  @apply relative;
+}
+
+/* Connection Lines */
+.node-line-container {
+  @apply absolute pointer-events-none;
+  left: calc(var(--depth, 0) * 1.5rem + 0.5rem);
+  top: 0;
+}
+
+.node-line-vertical {
+  @apply absolute border-l border-gray-300 dark:border-gray-700;
+  left: 0;
+  top: -0.75rem;
+  height: 1.5rem;
+}
+
+.node-line-horizontal {
+  @apply absolute border-t border-gray-300 dark:border-gray-700;
+  left: 0;
+  top: 0.75rem;
+  width: 1rem;
+}
+
+/* Don't show vertical line for last child */
+.tree-node-last > .node-content > .node-line-container > .node-line-vertical {
+  height: 0.75rem;
+}
+
+/* Parent continuation line */
+.node-children::before {
+  content: '';
+  @apply absolute border-l border-gray-300 dark:border-gray-700;
+  left: calc(var(--depth, 0) * 1.5rem + 0.5rem);
+  top: -0.75rem;
+  bottom: 0.75rem;
+}
+
+/* Hide line for last child's children */
+.tree-node-last > .node-children::before {
+  display: none;
+}
+
+/* More indicator */
+.node-more {
+  @apply relative flex items-center;
+  margin-left: calc(var(--depth, 1) * 1.5rem);
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .node-header {
+    @apply text-xs;
+  }
+  
+  .node-value {
+    @apply text-xs;
+  }
+}
+
+/* Dark mode specific */
+.dark .node-header:hover {
+  @apply bg-gray-800;
+}
+
+/* Type-specific colors */
+.node-value-string {
+  @apply text-green-600 dark:text-green-400;
+}
+
+.node-value-number {
+  @apply text-blue-600 dark:text-blue-400;
+}
+
+.node-value-boolean {
+  @apply text-pink-600 dark:text-pink-400;
+}
+
+.node-value-null {
+  @apply text-gray-500 dark:text-gray-500;
+}
+
+/* Smooth animations */
+.node-toggle {
+  transition: transform 0.2s ease-in-out;
+}
+
+.node-children {
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
