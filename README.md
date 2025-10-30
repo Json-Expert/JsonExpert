@@ -98,6 +98,64 @@ npm run build
 npm run preview
 ```
 
+### 🐳 Docker Deployment
+
+#### Quick Start with Docker
+
+```bash
+# Build Docker image
+docker build -t json-expert .
+
+# Run container
+docker run -d -p 80:80 --name json-expert json-expert
+
+# Access at http://localhost
+```
+
+#### Using Docker Compose
+
+```bash
+# Start the application
+docker-compose up -d
+
+# View logs
+docker-compose logs -f
+
+# Stop the application
+docker-compose down
+```
+
+#### Environment Configuration
+
+Create a `.env` file from the example:
+
+```bash
+cp .env.example .env
+```
+
+**Key configuration options:**
+
+```env
+# Domain Configuration
+VITE_ALLOWED_DOMAINS=jsonexpert.com,localhost
+
+# File Upload Settings
+VITE_MAX_FILE_SIZE=104857600  # 100MB
+
+# Server Port
+PORT=80
+```
+
+**Custom domain setup:**
+
+```bash
+# Set your domain(s)
+VITE_ALLOWED_DOMAINS=yourdomain.com,www.yourdomain.com
+
+# Run with custom port
+PORT=8080 docker-compose up -d
+```
+
 ---
 
 ## 📖 Usage

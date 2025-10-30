@@ -17,7 +17,7 @@ export default defineConfig({
     }),
     visualizer({
       filename: './dist/stats.html',
-      open: true,
+      open: false, // Don't auto-open in CI/Docker builds
       gzipSize: true,
       brotliSize: true,
     }),
